@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="mobile_fixes.css">
     <meta name="description"
         content="Рассчитайте свою психоматрицу по дате рождения. Точный нумерологический расчет квадрата Пифагора.">
 </head>
@@ -26,17 +27,17 @@
 
 
 
-            <button class="nav-toggle" aria-label="Меню" onclick="toggleMobileMenu()">
+            <button class="nav-toggle" aria-label="Меню">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
             <ul class="nav-links" id="navLinks">
-                <li><a href="#hero" onclick="closeMobileMenu()">Главная</a></li>
-                <li><a href="#matrixSection" onclick="closeMobileMenu()">Матрица</a></li>
-                <li><a href="#compatibilitySection" onclick="closeMobileMenu()">Совместимость</a></li>
-                <li><a href="#kidsSection" onclick="closeMobileMenu()">Дети</a></li>
-                <li><a href="#aboutSection" onclick="closeMobileMenu()">Обо мне</a></li>
+                <li><a href="#hero">Главная</a></li>
+                <li><a href="#matrixSection">Матрица</a></li>
+                <li><a href="#compatibilitySection">Совместимость</a></li>
+                <li><a href="#kidsSection">Дети</a></li>
+                <li><a href="#aboutSection">Обо мне</a></li>
             </ul>
         </div>
     </nav>
@@ -386,7 +387,6 @@
         </div>
     </div>
 
-    <script src="./mobile_menu.js"></script>
     <script type="module" src="./script.js"></script>
 </body>
 

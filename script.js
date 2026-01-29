@@ -83,6 +83,27 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('scroll', setActiveLink);
     setActiveLink(); // Set initial active state
 
+    // Mobile Menu Logic
+    const toggleBtn = document.querySelector('.nav-toggle');
+    const mobileMenu = document.getElementById('navLinks');
+
+    if (toggleBtn && mobileMenu) {
+        toggleBtn.addEventListener('click', function (e) {
+            e.preventDefault();
+            mobileMenu.classList.toggle('active');
+            toggleBtn.classList.toggle('active');
+            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+        });
+
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                toggleBtn.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+    }
+
     // DOM Elements - Main Calculator
     const form = document.getElementById('calcForm');
     const birthdateInput = document.getElementById('birthdate');
