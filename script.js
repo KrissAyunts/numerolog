@@ -728,7 +728,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 </a>
                 <a href="https://t.me/psy_kriss" target="_blank" class="contact-card monitor-glow" style="justify-content: center; background: rgba(255,255,255,0.05);">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:24px;height:24px;margin-right:10px;"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg>
-                    <span>Telegram личка</span>
+                    <span>Написать в Telegram</span>
                 </a>
                 <a href="https://instagram.com/Psy_kriss" target="_blank" class="contact-card monitor-glow" style="justify-content: center; background: rgba(255,255,255,0.05);">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:24px;height:24px;margin-right:10px;"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
@@ -736,7 +736,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 </a>
                 <a href="https://wa.me/79260020848" target="_blank" class="contact-card monitor-glow" style="justify-content: center; background: rgba(255,255,255,0.05);">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:24px;height:24px;margin-right:10px;"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-                    <span>+7 (926) 002-08-48</span>
+                    <span>WhatsApp</span>
                 </a>
             </div>
         `;
