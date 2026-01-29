@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Нумерологический Калькулятор | Матрица Пифагора</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <meta name="description"
+        content="Рассчитайте свою психоматрицу по дате рождения. Точный нумерологический расчет квадрата Пифагора.">
+  <script type="module" crossorigin src="/numerolog/assets/index-BSDN5Udd.js"></script>
+  <link rel="stylesheet" crossorigin href="/numerolog/assets/index-Da9ZcrOI.css">
+</head>
+
+<body>
+    <div class="background-globes">
+        <div class="globe globe-1"></div>
+        <div class="globe globe-2"></div>
+        <div class="globe globe-3"></div>
+    </div>
+
+    <nav class="glass-nav">
+        <div class="nav-container">
+            <div class="logo">Узнай <span class="highlight">Себя</span></div>
+            <ul class="nav-links">
+                <li><a href="#hero">Главная</a></li>
+                <li><a href="#matrixSection">Матрица</a></li>
+                <li><a href="#compatibilitySection">Совместимость</a></li>
+                <li><a href="#kidsSection">Дети</a></li>
+                <li><a href="#aboutSection">Обо мне</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <!-- Hero Section -->
+        <section id="hero" class="hero-section">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title">Откройте <span class="highlight">свой потенциал</span> через нумерологию</h1>
+                    <p class="hero-subtitle">Метод Статистического Психоанализа с точностью 99%</p>
+                    <p class="hero-description">Узнайте свои сильные стороны, совместимость с близкими и раскройте
+                        данные природой возможности через Квадрат Пифагора</p>
+                    <a href="#matrixSection" class="hero-cta">Рассчитать матрицу</a>
+                </div>
+                <div class="hero-image">
+                    <img src="/numerolog/olga-photo.jpg" alt="Кристина Аюнц" />
+                    <div class="hero-badge">
+                        <span>15+ лет</span>
+                        <small>практики</small>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Matrix Calculator Section -->
+        <section id="matrixSection" class="page-section section-left">
+            <div class="section-grid">
+                <div class="section-content">
+                    <h2>Расчет <span class="highlight">Матрицы</span></h2>
+                    <p>В матрице человека много показателей, понимая которые, каждый может реализовать возможности,
+                        данные природой. Реализация потенциала – ключ ко всем благам.</p>
+                    <ul class="features-list">
+                        <li>✓ Анализ 9 ключевых качеств</li>
+                        <li>✓ Дополнительные числа судьбы</li>
+                        <li>✓ Линии и диагонали влияния</li>
+                    </ul>
+
+                    <!-- Toggle Button -->
+                    <button class="form-toggle-btn" onclick="toggleForm('matrixFormContainer')">
+                        Рассчитать матрицу
+                    </button>
+                </div>
+
+            </div>
+
+            <!-- Hidden Form -->
+            <div id="matrixFormContainer" class="form-container hidden">
+                <div class="calculator-card glass-panel">
+                    <form id="calcForm">
+                        <div class="input-group">
+                            <label for="birthdate">Дата рождения</label>
+                            <input type="text" id="birthdate" placeholder="ДД.ММ.ГГГГ" inputmode="numeric"
+                                maxlength="10">
+                            <span class="error-message" id="dateError"></span>
+                        </div>
+                        <button type="submit" class="cta-button">Рассчитать</button>
+                    </form>
+                </div>
+            </div>
+
+            <div id="resultSection" class="result-section hidden">
+                <div class="numbers-summary glass-panel">
+                    <h3>Дополнительные числа</h3>
+                    <div class="add-numbers" id="addNumbers"></div>
+                    <div class="fate-number">
+                        <span>Число судьбы:</span>
+                        <strong id="fateNumber">-</strong>
+                    </div>
+                </div>
+
+                <div class="matrix-grid" id="matrixGrid"></div>
+            </div>
+        </section>
+
+        <!-- Compatibility Section -->
+        <section id="compatibilitySection" class="page-section section-right">
+            <div class="section-grid">
+
+                <div class="section-content">
+                    <h2>Индекс <span class="highlight">Совместимости</span></h2>
+                    <p>Узнайте насколько вы подходите друг дру другу. Анализ 12 ключевых параметров отношений.</p>
+                    <ul class="features-list">
+                        <li>✓ Энергетическая совместимость</li>
+                        <li>✓ Общие ценности и цели</li>
+                        <li>✓ Взаимопонимание и коммуникация</li>
+                    </ul>
+
+                    <!-- Toggle Button -->
+                    <button class="form-toggle-btn" onclick="toggleForm('compatFormContainer')">
+                        Рассчитать совместимость
+                    </button>
+                </div>
+            </div>
+
+            <!-- Hidden Form -->
+            <div id="compatFormContainer" class="form-container hidden">
+                <div class="calculator-card glass-panel">
+                    <form id="compatForm">
+                        <div class="input-group">
+                            <label>Ваша дата рождения</label>
+                            <input type="text" name="my_birthdate" class="date-input" placeholder="ДД.ММ.ГГГГ"
+                                autocomplete="on">
+                        </div>
+                        <div class="input-group">
+                            <label>Дата рождения партнера</label>
+                            <input type="text" name="partner_birthdate" class="date-input" placeholder="ДД.ММ.ГГГГ"
+                                autocomplete="on">
+                        </div>
+                        <button type="submit" class="cta-button">Рассчитать Совместимость</button>
+                    </form>
+                </div>
+            </div>
+
+            <div id="compatResult" class="glass-panel hidden result-section">
+                <div class="compat-header">
+                    <div class="compat-score-circle">
+                        <span id="compatScoreValue">0%</span>
+                        <small>Совместимость</small>
+                    </div>
+                </div>
+                <div id="compatDetailsGrid" class="compat-details"></div>
+            </div>
+        </section>
+
+        <!-- Kids Section -->
+        <section id="kidsSection" class="page-section section-left">
+            <div class="section-grid">
+                <div class="section-content">
+                    <h2>Дети и <span class="highlight">Родители</span></h2>
+                    <p>Гармония в семье через понимание. Анализ потенциала ребенка и точек соприкосновения с родителями.
+                    </p>
+                    <ul class="features-list">
+                        <li>✓ Характер и наклонности ребенка</li>
+                        <li>✓ Взаимодействие с мамой</li>
+                        <li>✓ Взаимодействие с папой</li>
+                    </ul>
+
+                    <!-- Toggle Button -->
+                    <button class="form-toggle-btn" onclick="toggleForm('kidsFormContainer')">
+                        Рассчитать совместимость
+                    </button>
+                </div>
+
+            </div>
+
+            <!-- Hidden Form -->
+            <div id="kidsFormContainer" class="form-container hidden">
+                <div class="calculator-card glass-panel">
+                    <form id="kidsForm">
+                        <div class="input-group">
+                            <label>Дата рождения ребенка</label>
+                            <input type="text" name="child_dob" class="date-input" placeholder="ДД.ММ.ГГГГ"
+                                autocomplete="on">
+                        </div>
+                        <div class="input-group">
+                            <label>Дата рождения мамы</label>
+                            <input type="text" name="mom_dob" class="date-input" placeholder="ДД.ММ.ГГГГ"
+                                autocomplete="on">
+                        </div>
+                        <div class="input-group">
+                            <label>Дата рождения папы (опционально)</label>
+                            <input type="text" name="dad_dob" class="date-input" placeholder="ДД.ММ.ГГГГ"
+                                autocomplete="on">
+                        </div>
+                        <button type="submit" class="cta-button">Рассчитать</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Kids Results -->
+            <div id="kidsResult" class="glass-panel hidden result-section">
+                <div class="kids-block">
+                    <h4>Ребенок <span id="kidsChildFate" class="fate-badge"></span></h4>
+                    <p id="kidsChildText"></p>
+                </div>
+
+                <div class="kids-block">
+                    <h4>Взаимодействие с Мамой <span id="kidsMomFate" class="fate-badge"></span></h4>
+                    <ul id="kidsMomText" class="analysis-list"></ul>
+                </div>
+
+                <div id="kidsDadBlock" class="kids-block hidden">
+                    <h4>Взаимодействие с Папой <span id="kidsDadFate" class="fate-badge"></span></h4>
+                    <ul id="kidsDadText" class="analysis-list"></ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="aboutSection" class="page-section about-section">
+            <div class="about-wrapper">
+                <div class="about-content glass-panel">
+                    <div class="about-image">
+                        <img src="/numerolog/olga-photo.jpg" alt="Кристина Аюнц" />
+                    </div>
+                    <div class="about-text">
+                        <h3>Кристина Аюнц</h3>
+                        <p class="about-title">Автор методики Статистического Психоанализа</p>
+                        <p>Более 15 лет исследований и практики. Моя цель — помочь вам раскрыть свой потенциал и
+                            наладить
+                            отношения с близкими через понимание врожденных качеств.</p>
+                        <p><strong>Точность метода составляет 99%.</strong></p>
+                        <div class="about-stats">
+                            <div class="stat">
+                                <span class="stat-number">15+</span>
+                                <span class="stat-label">лет опыта</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">5000+</span>
+                                <span class="stat-label">консультаций</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">99%</span>
+                                <span class="stat-label">точность</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>Школа Узнай Себя</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

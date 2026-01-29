@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Нумерология (Standalone)</title>
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --text-primary: #f8fafc;
+            --accent-primary: #8b5cf6;
+            --glass-bg: rgba(30, 41, 59, 0.8);
+        }
+
+        body {
+            background: var(--bg-color);
+            color: var(--text-primary);
+            font-family: sans-serif;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: var(--glass-bg);
+            padding: 20px;
+            border-radius: 16px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 1.2rem;
+            background: rgba(0, 0, 0, 0.3);
+            color: white;
+            border: 1px solid #555;
+            border-radius: 8px;
+        }
+
+        button {
+            width: 100%;
+            padding: 15px;
+            background: var(--accent-primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            cursor: pointer;
+        }
+
+        .matrix-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .matrix-cell {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            text-align: center;
+            border-radius: 8px;
+            position: relative;
+        }
+
+        .matrix-cell span {
+            display: block;
+            font-size: 0.8rem;
+            color: #aaa;
+        }
+
+        .matrix-cell strong {
+            font-size: 1.5rem;
+            display: block;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Диагностический режим</h1>
+        <div class="card">
+            <label>Введите дату рождения (ДД.ММ.ГГГГ):</label>
+            <input type="text" id="dateInput" placeholder="12.05.1990" value="12.05.1990">
+            <button id="calcBtn">Рассчитать (Тест)</button>
+        </div>
+
+        <div class="card" id="result" style="display:none;">
+            <h3>Результаты</h3>
+            <p>Доп. числа: <strong id="addNums"></strong></p>
+            <p>Число судьбы: <strong id="fateNum"></strong></p>
+            <div class="matrix-grid" id="grid"></div>
+            <div id="analysis" style="margin-top:20px; line-height:1.5;"></div>
+        </div>
+    </div>
+
+    <script>
+        console.log('Script loaded');
+
+        function sumDigits(num) {
+            return String(num).split('').reduce((acc, digit) => acc + parseInt(digit, 10), 0);
+        }
+
+        function calculate(dateStr) {
+            const cleanDate = dateStr.replace(/\./g, '');
+            const day = parseInt(dateStr.split('.')[0], 10);
+            const num1 = sumDigits(cleanDate);
+            const num2 = sumDigits(num1);
+            const firstDigit = parseInt(String(day)[0], 10);
+            const num3 = num1 - (2 * firstDigit);
+            const num4 = sumDigits(Math.abs(num3));
+
+            const allNumbers = cleanDate + String(num1) + String(num2) + String(num3) + String(num4);
+            const counts = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0, 8: 0, 9: 0 };
+            for (const char of allNumbers) {
+                if (counts[char] !== undefined) counts[char]++;
+            }
+
+            let fate = num2;
+            while (fate > 9 && fate !== 11 && fate !== 22 && fate !== 33) fate = sumDigits(fate);
+
+            return { nums: [num1, num2, num3, num4], matrix: counts, fate };
+        }
+
+        document.getElementById('calcBtn').addEventListener('click', () => {
+            try {
+                const val = document.getElementById('dateInput').value;
+                if (!/^\d{2}\.\d{2}\.\d{4}$/.test(val)) {
+                    alert('Ошибка формата даты! Используйте ДД.ММ.ГГГГ');
+                    return;
+                }
+
+                const res = calculate(val);
+
+                document.getElementById('addNums').textContent = res.nums.join(' • ');
+                document.getElementById('fateNum').textContent = res.fate;
+
+                const grid = document.getElementById('grid');
+                grid.innerHTML = '';
+                [1, 4, 7, 2, 5, 8, 3, 6, 9].forEach(n => {
+                    const count = res.matrix[n];
+                    const div = document.createElement('div');
+                    div.className = 'matrix-cell';
+                    div.innerHTML = `<span>${getLabel(n)}</span><strong>${count ? String(n).repeat(count) : '-'}</strong>`;
+                    grid.appendChild(div);
+                });
+
+                document.getElementById('result').style.display = 'block';
+            } catch (e) {
+                alert('Ошибка: ' + e.message);
+            }
+        });
+
+        function getLabel(n) {
+            const labels = { 1: 'Характер', 2: 'Энергия', 3: 'Интерес', 4: 'Здоровье', 5: 'Логика', 6: 'Труд', 7: 'Удача', 8: 'Долг', 9: 'Память' };
+            return labels[n] || '';
+        }
+    </script>
+</body>
+
+</html>
