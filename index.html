@@ -7,26 +7,27 @@
     <title>Нумерологический Калькулятор | Матрица Пифагора</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="mobile_fixes.css">
+    <link rel="stylesheet" href="animations.css">
     <meta name="description"
         content="Рассчитайте свою психоматрицу по дате рождения. Точный нумерологический расчет квадрата Пифагора.">
 </head>
 
 <body>
+    <!-- Starfield Canvas -->
+    <canvas id="starCanvas"></canvas>
+
     <div class="background-globes">
         <div class="globe globe-1"></div>
         <div class="globe globe-2"></div>
         <div class="globe globe-3"></div>
     </div>
 
-    <nav class="glass-nav">
+    <nav class="glass-nav" id="mainNav">
         <div class="nav-container">
             <div class="logo">Узнай <span class="highlight">Себя</span></div>
-
-
-
             <button class="nav-toggle" aria-label="Меню">
                 <span></span>
                 <span></span>
@@ -46,7 +47,7 @@
         <!-- Hero Section -->
         <section id="hero" class="hero-section">
             <div class="hero-content">
-                <div class="hero-text">
+                <div class="hero-text" data-reveal="left">
                     <h1 class="hero-title">Раскрой свой <span class="highlight">потенциал</span><br>через психоанализ и
                         нумерологию</h1>
                     <p class="hero-subtitle">Метод Статистического Психоанализа с точностью 99%</p>
@@ -54,8 +55,12 @@
                         данные природой возможности через Квадрат Пифагора</p>
                     <a href="#matrixSection" class="hero-cta">Рассчитать матрицу</a>
                 </div>
-                <div class="hero-image">
+                <div class="hero-image" data-reveal="right">
                     <img src="./olga-photo.jpg" alt="Кристина Аюнц" />
+                    <div class="hero-badge">
+                        <span>99%</span>
+                        <small>точность метода</small>
+                    </div>
                 </div>
             </div>
         </section>
@@ -63,7 +68,7 @@
         <!-- Matrix Calculator Section -->
         <section id="matrixSection" class="page-section section-left">
             <div class="section-grid">
-                <div class="section-content">
+                <div class="section-content" data-reveal="left">
                     <h2>
                         <svg class="section-icon" width="40" height="40" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2">
@@ -77,17 +82,29 @@
                     <p>В матрице человека много показателей, понимая которые, каждый может реализовать возможности,
                         данные природой. Реализация потенциала – ключ ко всем благам.</p>
                     <ul class="features-list">
-                        <li>✓ Анализ 9 ключевых качеств</li>
-                        <li>✓ Дополнительные числа судьбы</li>
-                        <li>✓ Линии и диагонали влияния</li>
+                        <li>Анализ 9 ключевых качеств</li>
+                        <li>Дополнительные числа судьбы</li>
+                        <li>Линии и диагонали влияния</li>
                     </ul>
-
-                    <!-- Toggle Button -->
                     <button class="form-toggle-btn" onclick="toggleForm('matrixFormContainer')">
                         Рассчитать матрицу
                     </button>
                 </div>
 
+                <!-- Decorative matrix visual -->
+                <div class="section-visual" data-reveal="right" data-reveal-delay="2">
+                    <div class="deco-matrix">
+                        <div class="dm-cell">1</div>
+                        <div class="dm-cell" data-highlight>7</div>
+                        <div class="dm-cell">4</div>
+                        <div class="dm-cell" data-highlight>5</div>
+                        <div class="dm-cell">3</div>
+                        <div class="dm-cell" data-highlight>1</div>
+                        <div class="dm-cell">2</div>
+                        <div class="dm-cell" data-highlight>6</div>
+                        <div class="dm-cell">8</div>
+                    </div>
+                </div>
             </div>
 
             <!-- Hidden Form -->
@@ -114,42 +131,28 @@
                         <strong id="fateNumber">-</strong>
                     </div>
                 </div>
-
                 <div class="matrix-grid" id="matrixGrid"></div>
             </div>
-        </section>
-        <div id="matrixFormContainer" class="form-container hidden">
-            <div class="calculator-card glass-panel">
-                <form id="calcForm">
-                    <div class="input-group">
-                        <label for="birthdate">Дата рождения</label>
-                        <input type="text" id="birthdate" placeholder="ДД.ММ.ГГГГ" inputmode="numeric" maxlength="10">
-                        <span class="error-message" id="dateError"></span>
-                    </div>
-                    <button type="submit" class="cta-button">Рассчитать</button>
-                </form>
-            </div>
-        </div>
-
-        <div id="resultSection" class="result-section hidden">
-            <div class="numbers-summary glass-panel">
-                <h3>Дополнительные числа</h3>
-                <div class="add-numbers" id="addNumbers"></div>
-                <div class="fate-number">
-                    <span>Число судьбы:</span>
-                    <strong id="fateNumber">-</strong>
-                </div>
-            </div>
-
-            <div class="matrix-grid" id="matrixGrid"></div>
-        </div>
         </section>
 
         <!-- Compatibility Section -->
         <section id="compatibilitySection" class="page-section section-right">
             <div class="section-grid">
+                <!-- Decorative hearts visual -->
+                <div class="section-visual" data-reveal="left" data-reveal-delay="2">
+                    <div class="deco-hearts">
+                        <div class="heart-ring">
+                            <div class="orbit-ring">
+                                <div class="orbit-dot"></div>
+                            </div>
+                        </div>
+                        <p
+                            style="color: var(--text-secondary); font-size:0.85rem; letter-spacing:0.15em; text-transform:uppercase;">
+                            Энергетический анализ</p>
+                    </div>
+                </div>
 
-                <div class="section-content">
+                <div class="section-content" data-reveal="right">
                     <h2>
                         <svg class="section-icon" width="40" height="40" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2">
@@ -163,12 +166,10 @@
                         совместной жизни, урегулирование конфликтов и четкие рекомендации по взращиванию любви и
                         уважения между партнерами</p>
                     <ul class="features-list">
-                        <li>✓ Энергетическая совместимость</li>
-                        <li>✓ Общие ценности и цели</li>
-                        <li>✓ Взаимопонимание и коммуникация</li>
+                        <li>Энергетическая совместимость</li>
+                        <li>Общие ценности и цели</li>
+                        <li>Взаимопонимание и коммуникация</li>
                     </ul>
-
-                    <!-- Toggle Button -->
                     <button class="form-toggle-btn" onclick="toggleForm('compatFormContainer')">
                         Рассчитать совместимость
                     </button>
@@ -210,7 +211,7 @@
         <!-- Kids Section -->
         <section id="kidsSection" class="page-section section-left">
             <div class="section-grid">
-                <div class="section-content">
+                <div class="section-content" data-reveal="left">
                     <h2>
                         <svg class="section-icon" width="40" height="40" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2">
@@ -224,17 +225,26 @@
                     <p>Гармония в семье через понимание. Анализ потенциала ребенка и точек соприкосновения с родителями.
                     </p>
                     <ul class="features-list">
-                        <li>✓ Способности</li>
-                        <li>✓ Взаимодействие с мамой</li>
-                        <li>✓ Взаимодействие с папой</li>
+                        <li>Способности</li>
+                        <li>Взаимодействие с мамой</li>
+                        <li>Взаимодействие с папой</li>
                     </ul>
-
-                    <!-- Toggle Button -->
                     <button class="form-toggle-btn" onclick="toggleForm('kidsFormContainer')">
                         Рассчитать совместимость
                     </button>
                 </div>
 
+                <!-- Decorative family visual -->
+                <div class="section-visual" data-reveal="right" data-reveal-delay="2">
+                    <div class="deco-matrix"
+                        style="grid-template-columns: repeat(2,90px); grid-template-rows: repeat(2,90px); gap:12px;">
+                        <div class="dm-cell" data-highlight style="font-size:2.5rem;">👶</div>
+                        <div class="dm-cell" style="font-size:2.5rem;">👩</div>
+                        <div class="dm-cell" style="font-size:2.5rem;">👨</div>
+                        <div class="dm-cell" data-highlight style="font-size:1.5rem; color:rgba(139,92,246,0.7);">♾️
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <!-- Hidden Form -->
@@ -271,7 +281,6 @@
                         </div>
                         <p id="kidsChildText"></p>
                     </div>
-
                     <div class="kids-card">
                         <div class="card-header">
                             <h4>Взаимодействие с Мамой</h4>
@@ -279,7 +288,6 @@
                         </div>
                         <ul id="kidsMomText" class="analysis-list"></ul>
                     </div>
-
                     <div id="kidsDadBlock" class="kids-card hidden">
                         <div class="card-header">
                             <h4>Взаимодействие с Папой</h4>
@@ -293,7 +301,7 @@
 
         <!-- About Section -->
         <section id="aboutSection" class="page-section about-section">
-            <div class="about-wrapper">
+            <div class="about-wrapper" data-reveal="scale">
                 <div class="about-content glass-panel">
                     <div class="about-image">
                         <img src="./kristina_2.jpg" alt="Кристина Аюнц" />
@@ -302,19 +310,19 @@
                         <h3 class="about-title">Помогающий Специалист<br>Кристина Аюнц</h3>
                         <p class="about-methods-label">Практикую методики:</p>
                         <ul class="about-methods-list">
-                            <li>Статистический психоанализ</li>
-                            <li>Метафорические карты</li>
-                            <li>Психологические игры</li>
-                            <li>Разговорная терапия</li>
+                            <li data-reveal data-reveal-delay="1">Статистический психоанализ</li>
+                            <li data-reveal data-reveal-delay="2">Метафорические карты</li>
+                            <li data-reveal data-reveal-delay="3">Психологические игры</li>
+                            <li data-reveal data-reveal-delay="4">Разговорная терапия</li>
                         </ul>
                         <p><strong>Точность метода составляет 99%.</strong></p>
                         <div class="about-stats">
-                            <div class="stat">
-                                <span class="stat-number">1000+</span>
+                            <div class="stat" data-reveal data-reveal-delay="1">
+                                <span class="stat-number" data-count="1000" data-suffix="+">1000+</span>
                                 <span class="stat-label">консультаций</span>
                             </div>
-                            <div class="stat">
-                                <span class="stat-number">99%</span>
+                            <div class="stat" data-reveal data-reveal-delay="2">
+                                <span class="stat-number" data-count="99" data-suffix="%">99%</span>
                                 <span class="stat-label">точность</span>
                             </div>
                         </div>
@@ -329,7 +337,8 @@
         <div class="footer-content">
             <div class="footer-contacts">
                 <!-- Telegram Channel -->
-                <a href="https://t.me/+hxRv5po9kPYzMzIy" target="_blank" class="contact-card monitor-glow">
+                <a href="https://t.me/+hxRv5po9kPYzMzIy" target="_blank" class="contact-card monitor-glow" data-reveal
+                    data-reveal-delay="1">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <path
@@ -340,7 +349,8 @@
                 </a>
 
                 <!-- Telegram Personal -->
-                <a href="https://t.me/psy_kriss" target="_blank" class="contact-card monitor-glow">
+                <a href="https://t.me/psy_kriss" target="_blank" class="contact-card monitor-glow" data-reveal
+                    data-reveal-delay="2">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <circle cx="12" cy="12" r="10"></circle>
@@ -351,7 +361,8 @@
                 </a>
 
                 <!-- Instagram -->
-                <a href="https://instagram.com/Psy_kriss" target="_blank" class="contact-card monitor-glow">
+                <a href="https://instagram.com/Psy_kriss" target="_blank" class="contact-card monitor-glow" data-reveal
+                    data-reveal-delay="3">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
@@ -361,8 +372,9 @@
                     <span>Instagram</span>
                 </a>
 
-                <!-- WhatsApp / Phone -->
-                <a href="https://wa.me/79260020848" target="_blank" class="contact-card monitor-glow">
+                <!-- WhatsApp -->
+                <a href="https://wa.me/79260020848" target="_blank" class="contact-card monitor-glow" data-reveal
+                    data-reveal-delay="4">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <path
@@ -386,6 +398,13 @@
     </div>
 
     <script type="module" src="./script.js"></script>
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 40);
+        }, { passive: true });
+    </script>
+    <script src="./animations.js" defer></script>
 </body>
 
 </html>
